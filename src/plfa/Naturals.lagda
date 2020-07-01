@@ -431,6 +431,21 @@ other word for evidence, which we will use interchangeably, is _proof_.
 Compute `3 + 4`, writing out your reasoning as a chain of equations.
 
 \begin{code}
+_ : 3 + 4 ≡ 7
+_ =
+  begin
+    3 + 4
+  ≡⟨⟩
+    suc (2 + 4)
+  ≡⟨⟩
+    suc (suc (1 + 4))
+  ≡⟨⟩
+    suc (suc (suc (0 + 4)))
+  ≡⟨⟩
+    suc (suc (suc 4))
+  ≡⟨⟩
+    7
+  ∎
 -- Your code goes here
 \end{code}
 
@@ -493,6 +508,21 @@ Compute `3 * 4`, writing out your reasoning as a chain of equations.
 
 \begin{code}
 -- Your code goes here
+_ : 3 * 4 ≡ 12
+_ =
+  begin
+    3 * 4
+  ≡⟨⟩    -- inductive case
+    4 + (2 * 4)
+  ≡⟨⟩    -- inductive case
+    4 + (4 + (1 * 4))
+  ≡⟨⟩    -- inductive case
+    4 + (4 + (4 + (0 * 4)))
+  ≡⟨⟩    -- base
+    4 + (4 + (4 + 0))
+  ≡⟨⟩    -- simplify
+    12
+  ∎
 \end{code}
 
 
@@ -506,7 +536,12 @@ Define exponentiation, which is given by the following equations:
 Check that `3 ^ 4` is `81`.
 
 \begin{code}
--- Your code goes here
+_^_ : ℕ → ℕ → ℕ
+n ^ zero = 1
+n ^ suc m = n * (n ^ m)
+
+_ : 3 ^ 4 ≡ 81
+_ = refl
 \end{code}
 
 
@@ -572,6 +607,31 @@ Compute `5 ∸ 3` and `3 ∸ 5`, writing out your reasoning as a chain of equati
 
 \begin{code}
 -- Your code goes here
+_ =
+  begin
+     5 ∸ 3
+  ≡⟨⟩
+     4 ∸ 2
+  ≡⟨⟩
+     3 ∸ 1
+  ≡⟨⟩
+     2 ∸ 0
+  ≡⟨⟩
+     2
+  ∎
+
+_ =
+  begin
+     3 ∸ 5
+  ≡⟨⟩
+     2 ∸ 4
+  ≡⟨⟩
+     1 ∸ 3
+  ≡⟨⟩
+     0 ∸ 2
+  ≡⟨⟩
+     0
+  ∎
 \end{code}
 
 
